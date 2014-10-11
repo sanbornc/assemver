@@ -181,3 +181,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+AssembComp.sln.DotSettings
+AssembComp.v2.ncrunchsolution
+*.ncrunchproject
