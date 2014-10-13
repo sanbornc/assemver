@@ -16,6 +16,7 @@ namespace Ss.AssembComp.Model
 		public List<ModuleDefinition> AddedModules { get; set; }
 		public List<ModuleDefinition> RemovedModules { get; set; }
 
+		public List<ModuleScanResult> ModuleScanResults { get; set; } 
 		
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Mono.Cecil;
@@ -73,6 +74,8 @@ namespace Ss.AssembComp.Scanners
 				return result;
 			}
 
+
+
 			result.AddedFolders = GetAdded(f => f.EnumerateDirectories(), null, directoryComparer);
 			result.RemovedFolders = GetRemoved(f => f.EnumerateDirectories(), null, directoryComparer);
 
@@ -84,8 +87,44 @@ namespace Ss.AssembComp.Scanners
 				f => f.Name.EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase), fileComparer)
 				.Select(f => ModuleDefinition.ReadModule(f.FullName)).ToList();
 
+			var baselineModules = Baseline.EnumerateFiles()
+				.Where(file => file.Name.EndsWith(".dll"))
+				.Select(f => ModuleDefinition.ReadModule(f.FullName));
+
+			result.ModuleScanResults = ScanModules(result.AddedModules).ToList();
+
 			return result;
 
+		}
+
+		IEnumerable<ModuleScanResult> ScanModules(List<ModuleDefinition> added)
+		{
+			var baselineFiles = Baseline.EnumerateFiles().Where(f => f.Name.EndsWith(".dll")).ToList();
+			var compareFiles = CompareTo.EnumerateFiles().Where(f => f.Name.EndsWith(".dll")).ToList();
+
+			foreach (var file in baselineFiles)
+			{
+				//scan all in 
+				var compared = compareFiles.SingleOrDefault(ct => ct.FullName == file.FullName);
+
+				var baseMod = ModuleDefinition.ReadModule(file.FullName);
+				var comparedMod = compared != null ? ModuleDefinition.ReadModule(compared.FullName) : null;
+
+				var result = new ModuleScanner(baseMod, comparedMod).Scan();
+				if (result != null)
+				{
+					yield return result;
+				}
+			}
+
+			foreach (var moduleDefinition in added)
+			{
+				var result = new ModuleScanner(null, moduleDefinition).Scan();
+				if (result != null)
+				{
+					yield return result;
+				}
+			}
 		}
 
 		public string FullName
