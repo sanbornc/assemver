@@ -9,6 +9,7 @@ namespace Ss.AssembComp.Model
 {
 	public class ModuleScanResult : ScanResult
 	{
+
 		public bool Added { get; set; }
 
 		public bool Removed { get; set; }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using Mono.Cecil;
 using Ss.AssembComp.Comparer;
 using Ss.AssembComp.Model;
@@ -13,7 +12,8 @@ namespace Ss.AssembComp.Scanners
 
 	public class ModuleScanner : Scanner<ModuleDefinition, ModuleScanResult>
 	{
-		Dictionary<string, TypeScanResult> knownTypeScanResults = new Dictionary<string, TypeScanResult>(); 
+		readonly Dictionary<string, TypeScanResult> knownTypeScanResults = new Dictionary<string, TypeScanResult>();
+		readonly TypeDefinitionEqualityComparer typeDefComparer = new TypeDefinitionEqualityComparer();
 
 		public ModuleScanner(ModuleDefinition baseline, ModuleDefinition compareTo) : base(baseline, compareTo)
 		{
@@ -62,7 +62,13 @@ namespace Ss.AssembComp.Scanners
 
 		public override ModuleScanResult Scan()
 		{
-			var result = new ModuleScanResult() {Added = Added, Removed = Removed};
+			var result = new ModuleScanResult
+			{
+				Added = Added, 
+				Removed = Removed,
+				FullName = FullName
+			};
+
 			if (Baseline == null || CompareTo == null)
 			{
 				return result;
@@ -81,21 +87,21 @@ namespace Ss.AssembComp.Scanners
 				result.DateChange = new Change<DateTime>(baselineDate, compareToDate);
 			}
 
-			var baselineTypes = Baseline.Types.Where(t => t.IsPublic).ToList();
-			var compareToTypes = CompareTo.Types.Where(t => t.IsPublic).ToList();
+			result.AddedTypes = GetAdded(m => m.Types, m => m.IsPublic, typeDefComparer);
+			result.RemovedTypes = GetRemoved(m => m.Types, m => m.IsPublic, typeDefComparer);
 
-			result.AddedTypes = compareToTypes.Except(baselineTypes, new TypeDefinitionEqualityComparer()).ToList();
-			result.RemovedTypes = baselineTypes.Except(compareToTypes, new TypeDefinitionEqualityComparer()).ToList();
-
-			result.PublicTypeScanResults = ScanPublicTypes(baselineTypes.Intersect(compareToTypes, new TypeDefinitionEqualityComparer()), compareToTypes).ToList();
+			result.PublicTypeScanResults = ScanPublicTypes().ToList();
 
 			return result;
 		}
 
-		IEnumerable<TypeScanResult> ScanPublicTypes(IEnumerable<TypeDefinition> types, IList<TypeDefinition> compareTypes)
+		IEnumerable<TypeScanResult> ScanPublicTypes()
 		{
-			//We need to create a TypeDefinition cache (Dict) so we can avoid a 
-			//if(knownTypeDefinitions.ContainsKey())
+			var baselineTypes = Baseline.Types.Where(t => t.IsPublic).ToList();
+			var compareTypes = CompareTo.Types.Where(t => t.IsPublic).ToList();
+
+			var types = baselineTypes.Intersect(compareTypes, typeDefComparer);
+
 			foreach (var typeDefinition in types)
 			{
 				var compared = compareTypes.SingleOrDefault(ct => ct.FullName == typeDefinition.FullName);
@@ -104,8 +110,6 @@ namespace Ss.AssembComp.Scanners
 				{
 					yield return result;
 				}
-				
-
 			}
 		}
 
@@ -122,6 +126,11 @@ namespace Ss.AssembComp.Scanners
 		Version GetVersion(ModuleDefinition module)
 		{
 			return module.Assembly.Name.Version;
+		}
+
+		public string FullName
+		{
+			get { return Baseline != null ? Baseline.FullyQualifiedName : CompareTo.FullyQualifiedName; }
 		}
 
 		

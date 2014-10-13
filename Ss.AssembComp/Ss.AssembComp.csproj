@@ -51,15 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer\DirectoryNameComparer.cs" />
+    <Compile Include="Comparer\FileNameComparer.cs" />
     <Compile Include="Comparer\MemberSignatureComparer.cs" />
     <Compile Include="Comparer\MethodSignatureComparer.cs" />
     <Compile Include="Comparer\TypeDefinitionEqualityComparer.cs" />
     <Compile Include="Model\Change.cs" />
+    <Compile Include="Model\FolderScanResult.cs" />
     <Compile Include="Model\ScanResult.cs" />
+    <Compile Include="Scanners\FolderScanner.cs" />
     <Compile Include="Scanners\ModuleScanner.cs" />
     <Compile Include="Model\ModuleScanResult.cs" />
-    <Compile Include="Model\MemberScanResult.cs" />
-    <Compile Include="Model\MethodScanResult.cs" />
     <Compile Include="Scanners\Scanner.cs" />
     <Compile Include="Model\TypeScanResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

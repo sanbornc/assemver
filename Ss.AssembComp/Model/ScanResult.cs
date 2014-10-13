@@ -2,6 +2,6 @@
 {
 	public class ScanResult
 	{
-		 
+		public string FullName { get; set; }
 	}
 }
