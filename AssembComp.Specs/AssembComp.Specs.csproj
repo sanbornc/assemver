@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3E9FB91-1FF2-4CD8-A336-A6AAC01FA522}</ProjectGuid>
+    <ProjectGuid>{EEEA58FE-8394-4B89-8084-F87ABA781B95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ss.AssembComp</RootNamespace>
-    <AssemblyName>Ss.AssembComp</AssemblyName>
+    <RootNamespace>AssembComp.Specs</RootNamespace>
+    <AssemblyName>AssembComp.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -35,17 +35,14 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.dll</HintPath>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\packages\Machine.Specifications.0.8.3\lib\net45\Machine.Specifications.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    <Reference Include="Machine.Specifications.Clr4">
+      <HintPath>..\packages\Machine.Specifications.0.8.3\lib\net45\Machine.Specifications.Clr4.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+    <Reference Include="Machine.Specifications.Should">
+      <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net45\Machine.Specifications.Should.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,28 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comparer\DirectoryNameComparer.cs" />
-    <Compile Include="Comparer\FileNameComparer.cs" />
-    <Compile Include="Comparer\MemberSignatureComparer.cs" />
-    <Compile Include="Comparer\MethodSignatureComparer.cs" />
-    <Compile Include="Comparer\TypeDefinitionEqualityComparer.cs" />
-    <Compile Include="IProcessor.cs" />
-    <Compile Include="Model\Change.cs" />
-    <Compile Include="Model\ExecutionOptions.cs" />
-    <Compile Include="Model\FolderScanResult.cs" />
-    <Compile Include="Model\ScanResult.cs" />
-    <Compile Include="Processor.cs" />
-    <Compile Include="ProcessorModule.cs" />
-    <Compile Include="Scanners\FolderScanner.cs" />
-    <Compile Include="Scanners\ModuleScanner.cs" />
-    <Compile Include="Model\ModuleScanResult.cs" />
-    <Compile Include="Scanners\Scanner.cs" />
-    <Compile Include="Model\TypeScanResult.cs" />
+    <Compile Include="ProgramSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scanners\TypeScanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AssembComp\AssembComp.csproj">
+      <Project>{16c17edb-cf30-4141-a230-3df6f88c9327}</Project>
+      <Name>AssembComp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ss.AssembComp\Ss.AssembComp.csproj">
+      <Project>{e3e9fb91-1ff2-4cd8-a336-a6aac01fa522}</Project>
+      <Name>Ss.AssembComp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

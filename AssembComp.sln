@@ -15,6 +15,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssembly1", "TestAssemb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssembly2", "TestAssembly2\TestAssembly2.csproj", "{6913188F-B8D7-4E4E-ACE8-15FA923DB23B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssembComp.Specs", "AssembComp.Specs\AssembComp.Specs.csproj", "{EEEA58FE-8394-4B89-8084-F87ABA781B95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{487D08D4-7B0F-4494-AB42-FDA942B74EDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{412A8ED5-0077-4A9F-BC59-E9C3C6363D72}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +52,18 @@ Global
 		{6913188F-B8D7-4E4E-ACE8-15FA923DB23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6913188F-B8D7-4E4E-ACE8-15FA923DB23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6913188F-B8D7-4E4E-ACE8-15FA923DB23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEEA58FE-8394-4B89-8084-F87ABA781B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEEA58FE-8394-4B89-8084-F87ABA781B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEEA58FE-8394-4B89-8084-F87ABA781B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEEA58FE-8394-4B89-8084-F87ABA781B95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{2802B315-5553-4D02-A0B9-9ED6EE74CD77} = {487D08D4-7B0F-4494-AB42-FDA942B74EDA}
 		{8F01890E-9192-417F-A865-030137463364} = {5C61DA54-1372-4798-85AD-EBBD46B2F945}
 		{6913188F-B8D7-4E4E-ACE8-15FA923DB23B} = {5C61DA54-1372-4798-85AD-EBBD46B2F945}
+		{EEEA58FE-8394-4B89-8084-F87ABA781B95} = {487D08D4-7B0F-4494-AB42-FDA942B74EDA}
 	EndGlobalSection
 EndGlobal

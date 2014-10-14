@@ -34,7 +34,6 @@ namespace Ss.AssembComp.Scanners
 			var result = new TypeScanResult
 			{
 				FullName = FullName,
-				//AddedMethods = GetAdded(Baseline.Methods, CompareTo.Methods, m => m.IsPublic, methodSignatureComparer),
 				AddedMethods = GetAdded(t => t.Methods, m => m.IsPublic, methodSignatureComparer),
 				RemovedMethods = GetRemoved(t => t.Methods, m => m.IsPublic, methodSignatureComparer),
 				AddedMembers = GetAdded(t => t.Fields, m => m.IsPublic, memberSignatureComparer),
