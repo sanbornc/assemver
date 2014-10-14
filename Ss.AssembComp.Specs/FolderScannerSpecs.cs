@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Formo;
 using Machine.Specifications;
 using Machine.Specifications.Model;
@@ -118,6 +119,7 @@ namespace Ss.AssembComp.Specs
 		It should_have_no_removed_folders = () => Result.RemovedFolders.ShouldBeEmpty();
 		It should_have_no_added_modules = () => Result.AddedModules.ShouldBeEmpty();
 		It should_have_no_removed_modules = () => Result.RemovedModules.ShouldBeEmpty();
+		It should_have_module_scan_results = () => Result.ModuleScanResults.ShouldNotBeEmpty();
 
 	}
 
@@ -138,6 +140,12 @@ namespace Ss.AssembComp.Specs
 		It should_have_removed_folders = () => Result.RemovedFolders.ShouldNotBeEmpty();
 		It should_have_added_modules = () => Result.AddedModules.ShouldNotBeEmpty();
 		It should_have_removed_modules = () => Result.RemovedModules.ShouldNotBeEmpty();
+		It should_have_module_scan_results = () => Result.ModuleScanResults.ShouldNotBeEmpty();
+		It should_have_two_module_scan_results = () => Result.ModuleScanResults.Count.ShouldEqual(3);
+
+
+		It should_have_module_named_TestAssembly1 =
+			() => Result.ModuleScanResults.SingleOrDefault(ms => ms.FullName.EndsWith("TestAssembly1.dll")).ShouldNotBeNull();
 
 	}
 

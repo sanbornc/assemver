@@ -34,9 +34,9 @@ namespace Ss.AssembComp.Scanners
 		{
 
 			var filteredBaseline = ApplyFilter(Baseline, func, filter);
-			var filteredCompared = ApplyFilter(CompareTo, func, filter); 
+			var filteredCompared = ApplyFilter(CompareTo, func, filter);
 
-			return filteredBaseline.Except(filteredCompared, comparer).ToList();
+			return filteredCompared.Except(filteredBaseline, comparer).ToList();
 		}
 
 
@@ -51,9 +51,9 @@ namespace Ss.AssembComp.Scanners
 		protected List<T> GetRemoved<T>(Func<TDef, IEnumerable<T>> func, Func<T, bool> filter, IEqualityComparer<T> comparer)
 		{
 			var filteredBaseline = ApplyFilter(Baseline, func, filter);
-			var filteredCompared = ApplyFilter(CompareTo, func, filter); 
+			var filteredCompared = ApplyFilter(CompareTo, func, filter);
 
-			return filteredCompared.Except(filteredBaseline, comparer).ToList();
+			return filteredBaseline.Except(filteredCompared, comparer).ToList();
 		}
 
 		private List<T> ApplyFilter<T>(TDef entity, Func<TDef, IEnumerable<T>> func, Func<T, bool> filter)

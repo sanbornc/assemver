@@ -87,10 +87,6 @@ namespace Ss.AssembComp.Scanners
 				f => f.Name.EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase), fileComparer)
 				.Select(f => ModuleDefinition.ReadModule(f.FullName)).ToList();
 
-			var baselineModules = Baseline.EnumerateFiles()
-				.Where(file => file.Name.EndsWith(".dll"))
-				.Select(f => ModuleDefinition.ReadModule(f.FullName));
-
 			result.ModuleScanResults = ScanModules(result.AddedModules).ToList();
 
 			return result;

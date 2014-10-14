@@ -7,12 +7,12 @@ namespace Ss.AssembComp.Comparer
 	{
 		public bool Equals(FileInfo x, FileInfo y)
 		{
-			return x.FullName == y.FullName;
+			return x.Name == y.Name;
 		}
 
 		public int GetHashCode(FileInfo obj)
 		{
-			return obj.FullName.GetHashCode();
+			return obj.Name.GetHashCode();
 		}
 	}
 }
