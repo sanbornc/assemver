@@ -93,7 +93,7 @@ namespace Ss.AssembComp.Scanners
 
 		}
 
-		IEnumerable<ModuleScanResult> ScanModules(List<ModuleDefinition> added)
+		IEnumerable<ModuleScanResult> ScanModules(IEnumerable<ModuleDefinition> added)
 		{
 			var baselineFiles = Baseline.EnumerateFiles().Where(f => f.Name.EndsWith(".dll")).ToList();
 			var compareFiles = CompareTo.EnumerateFiles().Where(f => f.Name.EndsWith(".dll")).ToList();
@@ -123,7 +123,7 @@ namespace Ss.AssembComp.Scanners
 			}
 		}
 
-		public string FullName
+		string FullName
 		{
 			get { return Baseline != null ? Baseline.FullName : CompareTo.FullName; }
 		}

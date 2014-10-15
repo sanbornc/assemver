@@ -24,12 +24,12 @@ namespace AssembComp
 			program.Process(args);
 		}
 
-		
+
 		public ExecutionOptions ExecutionOptions { get; set; }
 		readonly string assemblyName;
 		readonly TextWriter output;
 		OptionSet optionSet;
-		IProcessor processor;
+		readonly IProcessor processor;
 
 
 		public Program(TextWriter writer, IProcessor processor)
