@@ -7,6 +7,7 @@ using Autofac;
 using Mono.Options;
 using Ss.AssembComp;
 using Ss.AssembComp.Model;
+using Ss.AssembComp.Model.Analysis;
 
 namespace AssembComp
 {
@@ -88,6 +89,8 @@ namespace AssembComp
 				{"cd:", "The directory that is compared to the baseline", value => executionOptions.ComparePath = value},
 				{"ba:", "The baseline assembly used for comparison", value => executionOptions.BaselineAssembly = value},
 				{"ca:", "The assembly that is compared to the baseline", value => executionOptions.CompareAssembly = value},
+				{"member-add:", "Behavior when a member is added to a type in the compared assembly", value => executionOptions.MemberAddBehavior = GetResultType("member-add", value)}
+				//TODO the rest of the analysis behavior options
 			};
 
 			optionSet.Parse(args);
@@ -100,6 +103,29 @@ namespace AssembComp
 			output.Write(HelpStringHeader);
 			p.WriteOptionDescriptions(output);
 		}
+
+
+		static ResultType GetResultType(string memberName, string value)
+		{
+			value = value.ToLowerInvariant();
+
+			if (value.StartsWith("p"))
+			{
+				return ResultType.Pass;
+			}
+
+			if (value.StartsWith("f"))
+			{
+				return ResultType.Fail;
+			}
+
+			if (value.StartsWith("w"))
+			{
+				return ResultType.Warn;
+			}
+
+			throw new OptionException("Invalid option for analysis behavior. Use Pass, Fail, Warn", memberName);
+		} 
 
 		public string HelpStringHeader
 		{

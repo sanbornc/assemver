@@ -1,4 +1,6 @@
-﻿namespace Ss.AssembComp.Model
+﻿using Ss.AssembComp.Model.Analysis;
+
+namespace Ss.AssembComp.Model
 {
 	public enum ExecutionMethod
 	{
@@ -7,6 +9,8 @@
 
 	public class ExecutionOptions
 	{
+		
+
 		public string BaselinePath { get; set; }
 		public string ComparePath { get; set; }
 
@@ -14,6 +18,8 @@
 		public string CompareAssembly { get; set; }
 
 		public string OutputPath { get; set; }
+
+		public ResultType MemberAddBehavior { get; set; }
 
 		public bool ShowHelp { get; set; }
 

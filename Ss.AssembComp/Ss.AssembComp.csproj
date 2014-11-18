@@ -62,6 +62,7 @@
     <Compile Include="Comparer\MethodSignatureComparer.cs" />
     <Compile Include="Comparer\TypeDefinitionEqualityComparer.cs" />
     <Compile Include="IProcessor.cs" />
+    <Compile Include="Model\Analysis\AnalysisResult.cs" />
     <Compile Include="Model\Change.cs" />
     <Compile Include="Model\ExecutionOptions.cs" />
     <Compile Include="Model\FolderScanResult.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Scanners\TypeScanner.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Model\ModelDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

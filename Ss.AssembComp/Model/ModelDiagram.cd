@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ss.AssembComp.Model.Change&lt;T&gt;">
+    <Position X="11.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Change.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.ExecutionOptions" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQQAAAAACAAAAAAAAQAAAAIAAAAACBAAAAAA=</HashCode>
+      <FileName>Model\ExecutionOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.FolderScanResult">
+    <Position X="7.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAEAAAAAEAEAAAAAAAAAAAAAACABAQAA=</HashCode>
+      <FileName>Model\FolderScanResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.ModuleScanResult">
+    <Position X="14.25" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAMEAAAAAAAEAAAAAAAAAABAAAAACAAAA=</HashCode>
+      <FileName>Model\ModuleScanResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.ScanResult">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ScanResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.TypeScanResult">
+    <Position X="11" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQEAA=</HashCode>
+      <FileName>Model\TypeScanResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ss.AssembComp.Model.Analysis.AnalysisResult">
+    <Position X="4" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAEAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Analysis\AnalysisResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Ss.AssembComp.Model.ExecutionMethod">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAA=</HashCode>
+      <FileName>Model\ExecutionOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ss.AssembComp.Model.Analysis.ResultType">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Analysis\AnalysisResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ss.AssembComp.Model.Analysis.MemberType">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAIAAAAAQAACAAABAA=</HashCode>
+      <FileName>Model\Analysis\AnalysisResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ss.AssembComp.Model.Analysis.ChangeType">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIAAAAAAAAAAAAAAAAABAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Analysis\AnalysisResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
